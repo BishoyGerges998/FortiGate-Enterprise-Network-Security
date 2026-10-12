@@ -1,86 +1,78 @@
-# FortiGate Enterprise Network Security — Final Project
+# FortiGate Enterprise Network Security – Final Project
 
-**Engineer:** Bishoy Gerges
-**Course instructor:** Eng. Mahmoud Sabry  
-**Project type:** Individual, hands-on FortiGate firewall administration lab  
-**Scope:** 50 integrated practical tasks (as reported by the project author)
+**Engineer:** Bishoy Gerges  
+**Project Type:** Individual Hands-on Final Project  
+**Technology:** Fortinet FortiGate Firewall  
+**Scope:** 50 Practical Tasks  
 
-## Overview
+## Project Overview
 
-This project documents my individual FortiGate Firewall final assessment, where I built and configured an integrated enterprise-style network security lab from scratch. It combines network segmentation, identity-aware access control, security inspection, multi-WAN routing, remote connectivity, monitoring, and redundancy.
+This project demonstrates the design, configuration, and administration of a complete enterprise network security environment using Fortinet FortiGate Firewall.
 
-> **Evidence note:** The accompanying 28 screenshots show selected configuration screens and an HA cluster state. They are not a screenshot for every one of the 50 tasks, nor do they independently demonstrate end-to-end verification for every feature. See [Validation and Evidence](#validation-and-evidence).
+I independently implemented 50 practical tasks as part of my FortiGate Firewall final project, integrating network infrastructure, firewall security, identity management, secure remote access, traffic optimization, and high availability into one system.
 
-## Technologies and areas covered
+## Technologies & Features
 
-| Area | Implementation topics |
-| --- | --- |
-| Network foundations | LAN/WAN interfaces, VLANs, DHCP, IP reservations, link aggregation, static routing |
-| Firewall access control | Firewall policies, address objects, schedules, DNAT/VIPs, policy-based routing |
-| Identity | Admin roles, trusted hosts, local users, LDAP server integration, captive portal |
-| Threat protection | Antivirus, web filtering, application control, IPS, certificate/SSL inspection |
-| WAN resilience | Multi-ISP SD-WAN, performance SLA, steering/load balancing |
-| Secure remote connectivity | SSL VPN and IPsec site-to-site VPN |
-| Availability and operations | Active-passive HA, Security Fabric automation, email alerting, encrypted backup |
+### 1. Network Infrastructure
+- LAN and WAN interface configuration
+- VLANs and DHCP services
+- IP reservations
+- Link Aggregation
+- Static Routing
 
-The scope table summarizes the author's completed final-assessment work. Screenshots substantiate a subset of these configurations.
+![FortiGate Network Interfaces](screenshots/netwrok%20interfaces.png)
 
-## Architecture overview
-
-The lab connects segmented internal networks and a Windows Server environment through FortiGate, applying centralized security policies and using multiple WAN interfaces for SD-WAN. A second FortiGate device participates in an HA cluster. Logical layout (not a verified port-to-port wiring diagram):
-
-```text
-                  ISP / WAN connections
-                        |
-                [ FortiGate SD-WAN ]
-                        |
-                [ Firewall Policies ]
-                        |
-          +-------------+-------------+
-          |             |             |
-     VLAN / LANs   Windows Server   Remote access
-     + DHCP        / LDAP           (VPN)
-
-         [ FortiGate HA peer (active-passive) ]
-```
-
-## Selected configuration evidence
-#### Firewall Policies Configuration
+### 2. Firewall Administration
+- Firewall Policies and Address Objects
+- NAT and Virtual IPs (DNAT)
+- Policy-Based Routing
+- Administrator Accounts, Access Profiles, and Trusted Hosts
 
 ![FortiGate Firewall Policies](screenshots/polices%20with%20security%20prof.png)
 
-### Network and identity
-- [Network interfaces](screenshots/netwrok%20interfaces.png) — interfaces and segmented LAN/WAN entries shown in the FortiGate UI.
-- [LDAP server object](screenshots/serverr%20connect.png) — Windows Server LDAP integration entry.
-- [Administrator settings](screenshots/users.png) — administrator list and profiles.
-- [Static routing](screenshots/static%20route.png) and [policy routes](screenshots/policyroute.png).
+### 3. Authentication & Access Control
+- LDAP Integration with Windows Server
+- User Groups
+- Captive Portal Authentication
 
-### Firewall and security inspection
-- [Firewall policies and security profiles](screenshots/polices%20with%20security%20prof.png).
-- [Web filter URL rules](screenshots/webfilter.png) and [category quota](screenshots/quota%2Bwebfilter.png).
-- [Application control](screenshots/Application%20control.png), [antivirus](screenshots/antivirus.png), [client IPS](screenshots/IPS-CLIENT.png), and [server IPS](screenshots/IPS-SERVER.png).
-- [Certificate / CSR view](screenshots/create%20csr.png).
+### 4. Security Profiles
+- Antivirus
+- Web Filtering and Quotas
+- Application Control
+- Intrusion Prevention System (IPS)
+- SSL Deep Inspection and Certificate Configuration
 
-### Availability, WAN and monitoring
-- [SD-WAN members](screenshots/sd-wan.png), [performance SLA](screenshots/performance-SLA.png), and [SLA rules](screenshots/SLA%20Rules.png).
-- [HA configuration view](screenshots/HA.png) and [HA cluster state](screenshots/HA%20successfully.png).
-- [Security Fabric automation example](screenshots/securityfabric4.png) and [email alerts](screenshots/email%20log%20alert.png).
-- [Encrypted backup setup](screenshots/backup-sys.png) and [SSL VPN settings](screenshots/ssl%20vpn.png).
+![FortiGate Web Filtering](screenshots/webfilter.png)
 
-The complete image set is in [`screenshots/`](screenshots/). More detailed grouping is available in [`EVIDENCE_INDEX.md`](EVIDENCE_INDEX.md).
+![FortiGate IPS](screenshots/IPS-CLIENT.png)
 
-## Validation and evidence
+### 5. Traffic Management & SD-WAN
+- Traffic Shaping and Bandwidth Management
+- Multi-ISP SD-WAN Configuration
+- Performance SLA and SLA Rules
+- Application Steering and Load Balancing
 
-The project author reports completing all 50 tasks successfully. The screenshot archive contains **28 images**, primarily configuration screens. In particular, `HA successfully.png` shows the cluster membership and primary/secondary state. A complete verification package could additionally include sanitized connectivity tests, DHCP lease evidence, policy hit/log results, VPN tunnel status, and SD-WAN failover checks. These are suggested **additional evidence**, not results claimed to be in this archive.
+![FortiGate SD-WAN](screenshots/sd-wan.png)
 
-## Skills practiced
+### 6. VPN & Secure Connectivity
+- SSL-VPN
+- IPsec Site-to-Site VPN
 
-FortiGate firewall administration · VLANs/DHCP · network access policies · LDAP integration · UTM profiles · SD-WAN · VPN · HA · monitoring and secure backups.
+### 7. High Availability & Automation
+- High Availability (Active-Passive)
+- Security Fabric Automation
+- Email Alerts for Critical Events
+- Encrypted Configuration Backup
 
-## Publication / safety
+![FortiGate HA Cluster](screenshots/HA%20successfully.png)
 
-This repository represents a **training lab**, not production infrastructure. Before publishing publicly, review every screenshot for login names, email addresses, network topology details, hostnames, identifiers, tokens, and other sensitive information; redact anything you do not wish to disclose. **Never upload a real firewall backup or private key.**
+---
 
-## Credits
+## Key Learning Outcomes
 
-Independent project by **Bishoy Gerges**. Course instruction: **Eng. Mahmoud Sabry**.
+Through this project, I strengthened my practical skills in FortiGate firewall administration, network segmentation, identity-based access control, security policies, VPN connectivity, network availability, and troubleshooting.
+
+## Author
+
+**Bishoy Gerges**  
+IT Support Specialist |  Network Security Engineer
