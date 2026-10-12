@@ -45,6 +45,9 @@ The lab connects segmented internal networks and a Windows Server environment th
 ```
 
 ## Selected configuration evidence
+#### Network Interfaces Configuration
+
+![FortiGate Network Interfaces](screenshots/network%20interfaces.png)
 
 ### Network and identity
 - [Network interfaces](screenshots/netwrok%20interfaces.png) — interfaces and segmented LAN/WAN entries shown in the FortiGate UI.
